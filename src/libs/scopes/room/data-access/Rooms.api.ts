@@ -7,6 +7,7 @@ export class RoomsApi {
   public static async findById(id: string): Promise<Room> {
     const response = await fetch(
       `${process.env.NEXT_PUBLIC_API_URL}/rooms/${id}`,
+      { cache: "no-store" },
     );
 
     return response.json();
@@ -18,6 +19,7 @@ export class RoomsApi {
       headers: {
         "Content-Type": "application/json",
       },
+      cache: "no-store",
       body: JSON.stringify(createRoomDto),
     });
 
